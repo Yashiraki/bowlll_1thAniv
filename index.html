@@ -1,0 +1,42 @@
+/* ファイル構成：
+- index.html
+- style.css
+- script.js
+- celebration.jpg
+- correct.mp3（効果音）
+*/
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>YES or NOクイズ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>YES or NO クイズ 🎉</h1>
+
+  <div id="quiz-box" class="quiz-box visible">
+    <p id="question">読み込み中...</p>
+    <button class="btn" onclick="submitAnswer('yes')">YES</button>
+    <button class="btn" onclick="submitAnswer('no')">NO</button>
+  </div>
+
+  <div id="explanation-box" class="hidden">
+    <p id="explanation"></p>
+    <button class="btn" onclick="nextQuestion()">次へ</button>
+  </div>
+
+  <div id="result-box" class="hidden">
+    <h2 id="result-message">結果表示</h2>
+    <img id="celebration-img" src="celebration.jpg" alt="お祝い画像" class="hidden">
+    <br>
+    <a id="download-btn" class="btn hidden" href="celebration.jpg" download>画像をダウンロード</a>
+    <br>
+    <button class="btn" onclick="restartQuiz()">もう一度挑戦</button>
+  </div>
+
+  <audio id="sfx-correct" src="correct.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
