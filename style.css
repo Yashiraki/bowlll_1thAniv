@@ -31,4 +31,8 @@ body {
   .visible {
     display: block;
   }
+  .animate:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+  }
   
