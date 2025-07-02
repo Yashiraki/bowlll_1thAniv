@@ -33,6 +33,7 @@ const quizData = [
   const celebrationImg = document.getElementById("celebration-img");
   const downloadBtn = document.getElementById("download-btn");
   const sfx = document.getElementById("sfx-correct");
+  const wfx = document.getElementById("wfx-correct");
   
   function startQuiz() {
     startBox.classList.add("hidden");
@@ -60,11 +61,13 @@ const quizData = [
   
   function submitAnswer(selected) {
     sfx.currentTime = 0;
-    sfx.play();
   
     const quiz = quizData[current];
     if (selected === quiz.correct) {
-      correctCount++;
+        correctCount++;
+        sfx.play();
+    } else {
+        wfx.play();
     }
   
     quizBox.classList.add("hidden");

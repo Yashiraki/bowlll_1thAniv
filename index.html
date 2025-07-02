@@ -4,20 +4,20 @@
 - style.css
 - script.js
 - 茶楽田ぼうる1周年おめでとうイラスト.jpg
-- クイズ出題1.mp3（効果音）
+- クイズ正解1.mp3（効果音）
 -->
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>YES or NOクイズ</title>
+  <title>茶楽田ぼうる1周年記念クイズ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>
-    YES or NO クイズ 🎉
-    <img src="cracker.gif" alt="クラッカー" style="width: 100px; vertical-align: middle;">
+    茶楽田ぼうる1周年記念クイズ～～！
+    <img src="cracker.gif" alt="クラッカー" style="width: 40px; vertical-align: middle;">
   </h1>
 
   <div id="start-box" class="visible">
@@ -35,7 +35,7 @@
   </div>
 
   <div id="result-box" class="hidden">
-    <h2 id="result-message">結果表示</h2>
+    <h2 id="result-message"></h2>
     <img id="celebration-img" src="茶楽田ぼうる1周年おめでとうイラスト.jpg" alt="お祝い画像" class="hidden">
     <br>
     <a id="download-btn" class="btn hidden" href="茶楽田ぼうる1周年おめでとうイラスト.jpg" download>画像をダウンロード</a>
@@ -43,7 +43,8 @@
     <button class="btn animate" onclick=restartQuiz()>もう一度挑戦</button>
   </div>
 
-  <audio id="sfx-correct" src="クイズ出題1.mp3" preload="auto"></audio>
+  <audio id="sfx-correct" src="クイズ正解1.mp3" preload="auto"></audio>
+  <audio id="wfx-correct" src="クイズ不正解1.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
