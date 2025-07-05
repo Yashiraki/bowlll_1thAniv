@@ -15,10 +15,10 @@ const quizData = [
         question: "モンハンワイルズフルパコラボ(タマミツネ狩り)で、ぼうるちゃんが乙った回数は何回？",
         correct: "6回",
         explanation: "強くなるのだ・・・ぼうるよ・・・",
-        choices: ["5回", "6回", "7回"]
+        choices: ["4回", "5回", "6回"]
     },
     {
-        question: "8月32日の水族館で、正解すると水槽内の何が増える？",
+        question: "8月32日の水族館では、正解すると水槽内の何が増える？",
         correct: "クラゲ",
         explanation: "レアサソリさんが増えたら面白いやろなあ・・・",
         choices: ["クラゲ", "エイ", "レアサソリさん"]
@@ -26,7 +26,7 @@ const quizData = [
     {
       question: "最終問題！！忍者になりたいですか？",
       correct: "はい",
-      explanation: "忍者になりたいと、言え～～～！！！！",
+      explanation: "おや・・・？ぼうるちゃんの様子が・・・？",
       choices: ["はい", "いいえ"]
     }
   ];
@@ -87,9 +87,13 @@ const quizData = [
         quizBox.classList.add("hidden");
         explanationBox.classList.add("hidden");
         resultBox.classList.remove("hidden");
-        resultMessage.innerHTML = `${correctCount}問正解！全問正解するとプレゼントがあるよ！！`;
-        celebrationImg.classList.add("hidden");
-        downloadBtn.classList.add("hidden");
+        if(quiz.question === "最終問題！！忍者になりたいですか？"){
+            resultMessage.innerHTML = "忍者になりたいと、言え～～～！！！！";
+        } else {
+            resultMessage.innerHTML = `${correctCount}問正解！全問正解するとプレゼントがあるよ！！`;
+        }
+        // celebrationImg.classList.add("hidden");
+        // downloadBtn.classList.add("hidden");
         startButton.classList.add("hidden");
       }
     //quizBox.classList.add("hidden");
