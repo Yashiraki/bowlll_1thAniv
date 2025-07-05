@@ -1,20 +1,32 @@
 const quizData = [
     {
-      question: "私の好きな色は青である",
-      correct: "青",
-      explanation: "青はあなたが昔からよく使ってる色です！",
-      choices: ["赤", "青", "緑"]
+      question: "茶楽田ぼうるチャンネルで一番最初に上がっているショートは何の曲？",
+      correct: "ロミオとシンデレラ",
+      explanation: "解説：ぼうるちゃんは歌が上手いぞ！！",
+      choices: ["ロミオとシンデレラ", "ロウワー", "ソーラン節"]
     },
     {
-      question: "私たちは初めて会ったのはいつ？",
-      correct: "2020年",
-      explanation: "2020年のイベントで出会いました！",
-      choices: ["2019年", "2020年", "2021年"]
+      question: "「言質」←何と読む？",
+      correct: "げんち",
+      explanation: "まあさすがにもう覚えてる・・・よねぇ？",
+      choices: ["ことじち", "げんち", "げんしつ"]
     },
     {
-      question: "私は朝が得意である",
-      correct: "いいえ",
-      explanation: "毎朝寝坊してるの、知ってるよ😆",
+        question: "モンハンワイルズフルパコラボ(タマミツネ狩り)で、ぼうるちゃんが乙った回数は何回？",
+        correct: "6回",
+        explanation: "強くなるのだ・・・ぼうるよ・・・",
+        choices: ["5回", "6回", "7回"]
+    },
+    {
+        question: "8月32日の水族館で、正解すると水槽内の何が増える？",
+        correct: "クラゲ",
+        explanation: "レアサソリさんが増えたら面白いやろなあ・・・",
+        choices: ["クラゲ", "エイ", "レアサソリさん"]
+    },
+    {
+      question: "最終問題！！忍者になりたいですか？",
+      correct: "はい",
+      explanation: "忍者になりたいと、言え～～～！！！！",
       choices: ["はい", "いいえ"]
     }
   ];
@@ -34,6 +46,7 @@ const quizData = [
   const downloadBtn = document.getElementById("download-btn");
   const sfx = document.getElementById("sfx-correct");
   const wfx = document.getElementById("wfx-correct");
+  const syutudai = document.getElementById("syutudai");
   
   function startQuiz() {
     startBox.classList.add("hidden");
@@ -47,6 +60,8 @@ const quizData = [
     const quiz = quizData[current];
     questionEl.textContent = quiz.question;
     choicesEl.innerHTML = "";
+    syutudai.currentTime = 0;
+    syutudai.play();
   
     quiz.choices.forEach(choice => {
       const btn = document.createElement("button");
@@ -61,6 +76,7 @@ const quizData = [
   
   function submitAnswer(selected) {
     sfx.currentTime = 0;
+    wfx.currentTime = 0;
   
     const quiz = quizData[current];
     if (selected === quiz.correct) {
@@ -68,9 +84,15 @@ const quizData = [
         sfx.play();
     } else {
         wfx.play();
-    }
-  
-    quizBox.classList.add("hidden");
+        quizBox.classList.add("hidden");
+        explanationBox.classList.add("hidden");
+        resultBox.classList.remove("hidden");
+        resultMessage.innerHTML = `${correctCount}問正解！全問正解するとプレゼントがあるよ！！`;
+        celebrationImg.classList.add("hidden");
+        downloadBtn.classList.add("hidden");
+        startButton.classList.add("hidden");
+      }
+    //quizBox.classList.add("hidden");
     explanationBox.classList.remove("hidden");
     explanationEl.textContent = quiz.explanation;
   }
@@ -90,11 +112,12 @@ const quizData = [
   function showResult() {
     resultBox.classList.remove("hidden");
     if (correctCount === quizData.length) {
-      resultMessage.innerHTML = "🎉 全問正解！おめでとう！<br>ご褒美をどうぞ✨";
+      resultMessage.innerHTML = "🎉 全問正解！１周年おめでとう～～～！！！";
+      startBox.classList.add("hidden");
+      questionEl.classList.remove("hidden");
+      quizBox.classList.add("hidden");
       celebrationImg.classList.remove("hidden");
       downloadBtn.classList.remove("hidden");
-    } else {
-      resultMessage.innerHTML = "🙃 間違っちゃったけど、<br>そんな君も大好きだよ💖";
     }
   }
   
