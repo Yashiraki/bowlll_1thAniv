@@ -47,7 +47,11 @@ const quizData = [
   const sfx = document.getElementById("sfx-correct");
   const wfx = document.getElementById("wfx-correct");
   const syutudai = document.getElementById("syutudai");
+  const iwau = document.getElementById("iwau");
   
+  
+
+
   function startQuiz() {
     startBox.classList.add("hidden");
     quizBox.classList.remove("hidden");
@@ -122,6 +126,7 @@ const quizData = [
       quizBox.classList.add("hidden");
       celebrationImg.classList.remove("hidden");
       downloadBtn.classList.remove("hidden");
+      launchConfetti();
     }
   }
   
@@ -132,3 +137,28 @@ const quizData = [
     startBox.classList.remove("hidden");
   }
   
+  function launchConfetti() {
+    const container = document.createElement("div");
+    container.style.position = "fixed";
+    container.style.top = 0;
+    container.style.left = 0;
+    container.style.width = "100%";
+    container.style.height = "100%";
+    container.style.zIndex = 9999;
+    container.style.pointerEvents = "none";
+    document.body.appendChild(container);
+    iwau.play();
+  
+    for (let i = 0; i < 80; i++) {
+      const confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.position = "absolute";
+      confetti.style.left = Math.random() * 100 + "%";
+      confetti.style.top = "-10px";
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+      confetti.style.animationDuration = (2 + Math.random() * 1.5) + "s";
+      container.appendChild(confetti);
+    }
+  
+    setTimeout(() => container.remove(), 3000);
+  }
