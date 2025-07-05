@@ -1,27 +1,55 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffe29f, #ffa99f);
+    color: #333;
     text-align: center;
-    background: #fef6e4;
     padding: 50px;
+    animation: fadeIn 1s ease-in;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #ff4d4d;
+    text-shadow: 2px 2px 0 #fff;
   }
   
   .btn {
     margin: 10px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 10px;
-    background: #ffb703;
+    padding: 15px 30px;
+    font-size: 1.2rem;
     border: none;
-    color: white;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+  
+  .btn:active {
+    transform: scale(0.95);
   }
   
   img {
     max-width: 80%;
     height: auto;
     margin-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  
+  #choices .btn {
+    display: inline-block;
+    margin: 10px 20px;
+    min-width: 100px;
   }
   
   .hidden {
@@ -31,8 +59,76 @@ body {
   .visible {
     display: block;
   }
-  .animate:active {
-    transform: scale(0.95);
-    transition: transform 0.1s;
+  
+  #result-message {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  /* 🎇 紙吹雪 */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    animation: confetti-fall 2s linear forwards;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 999;
+  }
+  
+  @keyframes confetti-fall {
+    0% { transform: translateY(-100px) rotate(0); opacity: 1; }
+    100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
+  }
+  
+  /* 🔥 不正解時のフラッシュ */
+  .flash {
+    animation: flash-bg 0.4s;
+  }
+  
+  @keyframes flash-bg {
+    0% { background-color: #ff4d4d; }
+    100% { background: linear-gradient(135deg, #ffe29f, #ffa99f); }
+  }
+  
+  /* 🎁 ギフト宝箱アニメーション */
+  #gift-box {
+    width: 200px;
+    height: auto;
+    margin: 20px auto;
+    animation: pop 1s ease;
+  }
+  
+  /* 🎵 BGMボタン */
+  #bgm-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  
+  #bgm-toggle:hover {
+    background: #fff;
   }
   
